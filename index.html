@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Movimento e Pensamento</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+        integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<body>
+    <header class="header">
+        <div class="container header-content">
+            <div class="logo">
+                <img src="placeholder_logo.png" alt="Movimento e Pensamento Logo">
+            </div>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="container hero-content">
+            <h1>Unlock Mobility, Embrace Life!</h1>
+            <p>Reclaim freedom of movement in Duque de Caxias! Our expert physiotherapy brings vitality back to your life. Start today!</p>
+        </div>
+    </section>
+
+    <section class="services">
+        <div class="container">
+            <h2>Services</h2>
+            <div class="services-grid">
+                <div class="service-card">
+                    <img src="placeholder_service1.jpg" alt="Service 1">
+                </div>
+                <div class="service-card">
+                    <img src="placeholder_service2.jpg" alt="Service 2">
+                </div>
+                <div class="service-card">
+                    <img src="placeholder_service3.jpg" alt="Service 3">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="about-us">
+        <div class="container about-us-content">
+            <div class="about-us-image">
+                <img src="placeholder_about_us.jpg" alt="About Us Image">
+            </div>
+            <div class="about-us-text">
+                <h2>About us</h2>
+                <p>At Movimento e Pensamento, we are dedicated to providing top-quality physiotherapy services aimed at improving your overall wellbeing.</p>
+                <p>Our clinic offers a supportive and welcoming environment where every patient receives individualized care. Utilizing state-of-the-art techniques and equipment, we are committed to helping you achieve a healthier, more active lifestyle.</p>
+                <button class="contact-button">Contact</button>
+            </div>
+        </div>
+    </section>
+
+    <section class="treatments">
+        <div class="container">
+            <h2>Our Treatments</h2>
+            <div class="treatments-grid">
+                <div class="treatment-card">
+                    <p>Experience targeted treatment for muscle tension and discomfort, tailored to promote optimal recovery.</p>
+                    <img src="placeholder_treatment1.jpg" alt="Treatment 1">
+                </div>
+                <div class="treatment-card">
+                    <p>Accelerate your healing journey with personalized care plans designed to support post-operative recovery.</p>
+                    <img src="placeholder_treatment2.jpg" alt="Treatment 2">
+                </div>
+                <div class="treatment-card">
+                    <p>Alleviate persistent pain with specialized therapies aimed at enhancing life quality and mobility.</p>
+                    <img src="placeholder_treatment3.jpg" alt="Treatment 3">
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <section class="more-info">
+        <div class="container">
+            <h2>More info</h2>
+            <div class="more-info-grid">
+                <div class="info-card">
+                    <img src="placeholder_info1.jpg" alt="Info 1">
+                    <h3>Basic Physiotherapy Session</h3>
+                    <p><b>$120</b><br>per session</p>
+                </div>
+                <div class="info-card popular">
+                    <img src="placeholder_info2.jpg" alt="Info 2">
+                    <h3>Specialized Physiotherapy Session</h3>
+                    <p><b>$220</b></p>
+                </div>
+                <div class="info-card">
+                    <img src="placeholder_info3.jpg" alt="Info 3">
+                    <h3>Comprehensive Physiotherapy Plan</h3>
+                    <p><b>$1800</b><br>per month</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="testimonial-carousel">
+        <div class="container">
+            <div class="testimonial-container">
+                <div class="testimonial-slide">
+                    <p>Movimento e Pensamento is outstanding! Their team provided exceptional physiotherapy that greatly improved my mobility. The staff is compassionate and highly skilled. I am truly thankful for their support and recommend them to anyone seeking quality care in Duque de Caxias. Thank you so much!</p>
+                    <p>- Ana</p>
+                </div>
+            </div>
+            <div class="carousel-dots">
+                <span class="dot active-dot"></span>
+                <span class="dot"></span>
+            </div>
+            <div class="carousel-buttons">
+                <button class="prev-button">❮</button>
+                <button class="next-button">❯</button>
+            </div>
+        </div>
+    </section>
+
+
+    <section class="contact">
+        <div class="container contact-content">
+            <div class="contact-text">
+                <h2>Reach Out Today</h2>
+                <p>Use the contact form to connect with us. We're eager to assist you and answer any questions you may have.</p>
+            </div>
+            <div class="contact-form">
+                <form>
+                    <input type="text" placeholder="Name" required>
+                    <input type="email" placeholder="Email" required>
+                    <textarea placeholder="Message" required></textarea>
+                    <button type="submit">Submit</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <section id="patient-registration" class="patient-registration">
+        <div class="container">
+          <h2>Patient Registration</h2>
+           <form id="patientForm" class="registration-form">
+               <input type="text" id="patientName" placeholder="Your Name" required>
+               <input type="email" id="patientEmail" placeholder="Your Email" required>
+               <input type="tel" id="patientPhone" placeholder="Your Phone" required>
+               <button type="submit">Register</button>
+           </form>
+           <div id="registrationMessage"></div>
+        </div>
+     </section>
+
+    <section id="appointment-scheduling" class="appointment-scheduling">
+        <div class="container">
+            <h2>Schedule Appointment</h2>
+            <div class="calendar-wrapper">
+                <div class="calendar">
+                   <div class="calendar-header">
+                         <button id="prevMonthBtn"><i class="fas fa-chevron-left"></i></button>
+                        <h3 id="currentMonth"></h3>
+                         <button id="nextMonthBtn"><i class="fas fa-chevron-right"></i></button>
+                    </div>
+                    <div id="calendar-days" class="calendar-days"></div>
+                    <div class="selected-time-slot">
+                         <input type="time" id="timeSelector"  required>
+                    </div>
+                </div>
+
+            </div>
+            <form id="appointmentForm" class="appointment-form">
+                <select id="sessionType" required>
+                    <option value="" disabled selected>Select Session Type</option>
+                    <option value="basic">Basic Physiotherapy Session</option>
+                    <option value="specialized">Specialized Physiotherapy Session</option>
+                    <option value="comprehensive">Comprehensive Physiotherapy Plan</option>
+                </select>
+                <textarea id="additionalNotes" placeholder="Additional Notes"></textarea>
+                <button type="submit">Schedule Appointment</button>
+           </form>
+             <div id="appointmentMessage"></div>
+        </div>
+    </section>
+
+    <section id="appointment-list" class="appointment-list">
+        <div class="container">
+            <h2>My Appointments</h2>
+            <ul id="appointments">
+                </ul>
+        </div>
+    </section>
+
+
+
+
+    <section class="location">
+        <div class="container location-content">
+            <div class="location-map">
+                <img src="https://placehold.co/600x400/f0f0f0/4a4a4a/?text=Static+Map" alt="Static Map" >
+                <div class="location-pin"></div>
+            </div>
+            <div class="location-text">
+                <h2>Location</h2>
+                <p>Duque de Caxias, RJ, Brasil</p>
+            </div>
+        </div>
+    </section>
+
+
+
+    <footer class="footer">
+        <div class="container footer-content">
+            <div class="footer-logos">
+                <img src="placeholder_footer_logo1.png" alt="Footer Logo 1">
+                <img src="placeholder_footer_logo2.png" alt="Footer Logo 2">
+                <img src="placeholder_footer_logo3.png" alt="Footer Logo 3">
+                <img src="placeholder_footer_logo4.png" alt="Footer Logo 4">
+            </div>
+            <p>Made with <span>Durable</span></p>
+        </div>
+    </footer>
+
+    <script src="js/script.js"></script>
+</body>
+</html>
