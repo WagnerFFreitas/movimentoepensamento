@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <!-- Previous head content remains the same -->
+    <style>
+        /* Previous styles remain the same */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            z-index: 1000;
+        }
+        
+        .modal.active {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+    </style>
+</head>
+<body class="bg-gray-900 text-white">
+    <!-- Modificação na Navegação para incluir área do paciente -->
+    <nav class="bg-gray-900 p-4 fixed w-full z-50">
+        <div class="container mx-auto flex justify-between items-center">
+            <div class="flex items-center">
+                <div class="w-10 h-10 bg-white rounded"></div>
+                <span class="ml-2 text-xl font-bold">Movimento e Pensamento</span>
+            </div>
+            <div class="hidden md:flex space-x-6">
+                <a href="#home" class="hover:text-green-400">Home</a>
+                <a href="#services" class="hover:text-green-400">Serviços</a>
+                <a href="#about" class="hover:text-green-400">Sobre</a>
+                <a href="#contact" class="hover:text-green-400">Contato</a>
+                <button onclick="showLoginModal()" class="bg-green-400 text-gray-900 px-4 py-2 rounded hover:bg-green-500">Área do Paciente</button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Previous content remains the same until before the footer -->
+
+    <!-- Modal de Login -->
+    <div id="loginModal" class="modal">
+        <div class="bg-gray-800 p-8 rounded-lg max-w-md w-full mx-4">
+            <h2 class="text-2xl font-bold mb-6 text-center">Área do Paciente</h2>
+            <div class="space-y-4">
+                <input type="email" placeholder="Email" class="w-full p-3 rounded bg-gray-700">
+                <input type="password" placeholder="Senha" class="w-full p-3 rounded bg-gray-700">
+                <button onclick="login()" class="w-full bg-green-400 text-gray-900 py-3 rounded font-semibold hover:bg-green-500">Entrar</button>
+                <p class="text-center">Não tem conta? <a href="#" onclick="showRegisterModal()" class="text-green-400">Cadastre-se</a></p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal de Cadastro -->
+    <div id="registerModal" class="modal">
+        <div class="bg-gray-800 p-8 rounded-lg max-w-md w-full mx-4">
+            <h2 class="text-2xl font-bold mb-6 text-center">Cadastro de Paciente</h2>
+            <form onsubmit="registerPatient(event)" class="space-y-4">
+                <input type="text" placeholder="Nome Completo" required class="w-full p-3 rounded bg-gray-700">
+                <input type="email" placeholder="Email" required class="w-full p-3 rounded bg-gray-700">
+                <input type="tel" placeholder="WhatsApp" required class="w-full p-3 rounded bg-gray-700">
+                <input type="password" placeholder="Senha" required class="w-full p-3 rounded bg-gray-700">
+                <button type="submit" class="w-full bg-green-400 text-gray-900 py-3 rounded font-semibold hover:bg-green-500">Cadastrar</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Área do Paciente (visível após login) -->
+    <div id="patientArea" class="modal">
+        <div class="bg-gray-800 p-8 rounded-lg max-w-4xl w-full mx-4">
+            <div class="flex justify-between items-center mb-6">
+                <h2 class="text-2xl font-bold">Minha Área</h2>
+                <button onclick="logout()" class="text-gray-400 hover:text-white">Sair</button>
+            </div>
+            
+            <!-- Abas de navegação -->
+            <div class="flex mb-6 border-b border-gray-700">
+                <button onclick="switchTab('appointments')" class="py-2 px-4 border-b-2 border-green-400">Agendamentos</button>
+                <button onclick="switchTab('history')" class="py-2 px-4">Histórico</button>
+                <button onclick="switchTab('profile')" class="py-2 px-4">Meu Perfil</button>
+            </div>
+
+            <!-- Conteúdo dos Agendamentos -->
+            <div id="appointmentsTab" class="space-y-6">
+                <div class="flex justify-between items-center">
+                    <h3 class="text-xl font-semibold">Meus Agendamentos</h3>
+                    <button onclick="showNewAppointmentForm()" class="bg-green-400 text-gray-900 px-4 py-2 rounded hover:bg-green-500">Novo Agendamento</button>
+                </div>
+
+                <!-- Lista de Agendamentos -->
+                <div class="space-y-4">
+                    <!-- Exemplo de agendamento -->
+                    <div class="bg-gray-700 p-4 rounded flex justify-between items-center">
+                        <div>
+                            <p class="font-semibold">Fisioterapia Regular</p>
+                            <p class="text-sm text-gray-400">Segunda-feira, 22 de Janeiro - 14:00</p>
+                        </div>
+                        <div class="flex space-x-2">
+                            <button onclick="editAppointment(1)" class="text-blue-400 hover:text-blue-300">Editar</button>
+                            <button onclick="cancelAppointment(1)" class="text-red-400 hover:text-red-300">Cancelar</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Previous footer content -->
+
+    <script>
+        // Previous JavaScript content remains...
+
+        // Funções do sistema de autenticação e agendamento
+        function showLoginModal() {
+            document.getElementById('loginModal').classList.add('active');
+        }
+
+        function showRegisterModal() {
+            document.getElementById('loginModal').classList.remove('active');
+            document.getElementById('registerModal').classList.add('active');
+        }
+
+        function registerPatient(event) {
+            event.preventDefault();
+            const formData = new FormData(event.target);
+            
+            // Simulando registro bem-sucedido
+            alert('Cadastro realizado com sucesso!');
+            
+            // Enviando mensagem para WhatsApp da clínica
+            const message = `Novo paciente cadastrado: ${formData.get('nome')}`;
+            const whatsappNumber = '5521999999999'; // Número da clínica
+            const whatsappLink = `https://api.whatsapp.com/send?phone=${whatsappNumber}&text=${encodeURIComponent(message)}`;
+            window.open(whatsappLink, '_blank');
+
+            document.getElementById('registerModal').classList.remove('active');
+            showLoginModal();
+        }
+
+        function login() {
+            // Simulando login bem-sucedido
+            document.getElementById('loginModal').classList.remove('active');
+            document.getElementById('patientArea').classList.add('active');
+        }
+
+        function logout() {
+            document.getElementById('patientArea').classList.remove('active');
+        }
+
+        function switchTab(tab) {
+            // Implementar troca de abas
+            console.log(`Switching to ${tab} tab`);
+        }
+
+        function showNewAppointmentForm() {
+            // Implementar formulário de novo agendamento
+            const message = "Novo agendamento solicitado";
+            const whatsappNumber = '5521999999999'; // Número da clínica
+            const whatsappLink = `https://api.whatsapp.com/send?phone=${whatsappNumber}&text=${encodeURIComponent(message)}`;
+            window.open(whatsappLink, '_blank');
+        }
+
+        function editAppointment(id) {
+            // Implementar edição de agendamento
+            const message = `Solicitação de alteração do agendamento #${id}`;
+            const whatsappNumber = '5521999999999'; // Número da clínica
+            const whatsappLink = `https://api.whatsapp.com/send?phone=${whatsappNumber}&text=${encodeURIComponent(message)}`;
+            window.open(whatsappLink, '_blank');
+        }
+
+        function cancelAppointment(id) {
+            if (confirm('Deseja realmente cancelar este agendamento?')) {
+                // Implementar cancelamento
+                const message = `Cancelamento do agendamento #${id}`;
+                const whatsappNumber = '5521999999999'; // Número da clínica
+                const whatsappLink = `https://api.whatsapp.com/send?phone=${whatsappNumber}&text=${encodeURIComponent(message)}`;
+                window.open(whatsappLink, '_blank');
+            }
+        }
+
+        // Fechar modais ao clicar fora
+        document.querySelectorAll('.modal').forEach(modal => {
+            modal.addEventListener('click', (e) => {
+                if (e.target === modal) {
+                    modal.classList.remove('active');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
