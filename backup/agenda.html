@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Minha Agenda - Movimento e Pensamento</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+        <nav>
+            <div class="logo">Movimento e Pensamento</div>
+            <div class="menu">
+               <button id="logout-button" class="login-button">Sair</button>
+            </div>
+        </nav>
+    </header>
+  <section id="agenda-section">
+        <div class="agenda-container">
+            <h2>Meus Agendamentos</h2>
+             <form id="agendamento-form">
+               <label for="data-hora">Data e Hora:</label>
+               <input type="datetime-local" id="data-hora" required>
+               <textarea placeholder="Mensagem" required></textarea>
+               <button type="submit">Agendar</button>
+             </form>
+              <div id="agendamentos-table-container">
+                   <table id="agendamentos-table">
+                       <thead>
+                           <tr>
+                               <th>Data e Hora</th>
+                               <th>Mensagem</th>
+                               <th>Status</th>
+                           </tr>
+                       </thead>
+                       <tbody id="agendamentos-list">
+                           <!-- Agendamentos serão listados aqui via JavaScript -->
+                       </tbody>
+                   </table>
+                </div>
+        </div>
+    </section>
+ <footer class="footer">
+     <p>© 2024 Movimento e Pensamento. Todos os direitos reservados.</p>
+  </footer>
+   <script src="agenda.js"></script>
+</body>
+</html>

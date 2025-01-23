@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Movimento e Pensamento</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- Header -->
+  <header>
+    <div class="container">
+      <div class="logo">
+        <div class="logo-icon"></div>
+        <span>Movimento e Pensamento</span>
+      </div>
+      <nav>
+        <button class="login-button" id="loginButton">Login</button>
+        <button class="nav-button">Add section +</button>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Login Modal -->
+  <div class="modal" id="loginModal">
+    <div class="modal-content">
+      <span class="close">&times;</span>
+      <h2>Login</h2>
+      <form id="loginForm">
+        <input type="email" placeholder="Email" required>
+        <input type="password" placeholder="Password" required>
+        <button type="submit">Login</button>
+      </form>
+      <p>Don't have an account? <a href="#" id="showRegister">Register here</a></p>
+    </div>
+  </div>
+
+  <!-- Register Modal -->
+  <div class="modal" id="registerModal">
+    <div class="modal-content">
+      <span class="close">&times;</span>
+      <h2>Patient Registration</h2>
+      <form id="registerForm">
+        <input type="text" placeholder="Full Name" required>
+        <input type="email" placeholder="Email" required>
+        <input type="password" placeholder="Password" required>
+        <input type="tel" placeholder="Phone" required>
+        <input type="date" placeholder="Date of Birth" required>
+        <textarea placeholder="Medical History (optional)"></textarea>
+        <button type="submit">Register</button>
+      </form>
+      <p>Already have an account? <a href="#" id="showLogin">Login here</a></p>
+    </div>
+  </div>
+
+  <!-- Appointment Modal -->
+  <div class="modal" id="appointmentModal">
+    <div class="modal-content">
+      <span class="close">&times;</span>
+      <h2>Schedule Appointment</h2>
+      <form id="appointmentForm">
+        <select name="service" required>
+          <option value="">Select Service</option>
+          <option value="basic">Basic Physiotherapy Session</option>
+          <option value="specialized">Specialized Physiotherapy Session</option>
+          <option value="comprehensive">Comprehensive Physiotherapy Plan</option>
+        </select>
+        <input type="date" required>
+        <select name="time" required>
+          <option value="">Select Time</option>
+          <option value="0900">09:00</option>
+          <option value="1000">10:00</option>
+          <option value="1100">11:00</option>
+          <option value="1400">14:00</option>
+          <option value="1500">15:00</option>
+          <option value="1600">16:00</option>
+        </select>
+        <textarea placeholder="Additional Notes"></textarea>
+        <button type="submit">Schedule Appointment</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Rest of the existing content -->
+  <!-- Hero Section -->
+  <section class="hero-section">
+    <div class="container">
+      <div class="hero-content">
+        <h1>Movimento e Pensamento</h1>
+        <p>Physiotherapy & Wellness Center</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Location Section -->
+  <section class="location-section">
+    <div class="section-header">
+      <button class="add-section-button">Add section +</button>
+    </div>
+    <div class="container">
+      <div class="location-card">
+        <h2>Location</h2>
+        <div class="location-info">
+          <svg class="location-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+            <circle cx="12" cy="10" r="3"></circle>
+          </svg>
+          <p>Duque de Caxias, RJ, Brasil</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Form -->
+  <section class="contact-section">
+    <div class="section-header">
+      <button class="add-section-button">Add section +</button>
+    </div>
+    <div class="container">
+      <div class="contact-card">
+        <h2>Reach Out Today</h2>
+        <p>Use the contact form to connect with us. We're eager to assist you and answer any questions you may have.</p>
+        <form>
+          <div class="form-grid">
+            <input type="text" placeholder="Name" required>
+            <input type="email" placeholder="Email" required>
+          </div>
+          <textarea placeholder="Message" required></textarea>
+          <button type="submit">Submit</button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonials -->
+  <section class="testimonials-section">
+    <div class="section-header">
+      <button class="add-section-button">Add section +</button>
+    </div>
+    <div class="container">
+      <div class="testimonial-container">
+        <p class="testimonial-text"></p>
+        <p class="testimonial-author"></p>
+      </div>
+      <button class="testimonial-nav prev-testimonial">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M15 18l-6-6 6-6"/>
+        </svg>
+      </button>
+      <button class="testimonial-nav next-testimonial">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M9 18l6-6-6-6"/>
+        </svg>
+      </button>
+    </div>
+  </section>
+
+  <!-- Services -->
+  <section class="services-section">
+    <div class="section-header">
+      <button class="add-section-button">Add section +</button>
+    </div>
+    <div class="container">
+      <h2>More info</h2>
+      <div class="services-grid">
+        <!-- Service cards will be dynamically inserted here -->
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <p>Made with Durable © <script>document.write(new Date().getFullYear())</script> Movimento e Pensamento. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
