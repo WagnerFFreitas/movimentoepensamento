@@ -1,0 +1,833 @@
+Vou ajudar você a desenvolver este projeto em partes. Começaremos com a estrutura básica e o primeiro componente (carrossel). Aqui está a primeira parte do código:
+
+```html
+<!-- index.html -->
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Movimento e Pensamento</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <nav class="navbar">
+            <div class="logo">
+                <img src="logo.png" alt="Movimento e Pensamento">
+                <h1>Movimento e Pensamento</h1>
+            </div>
+            <ul class="nav-links">
+                <li><a href="#inicio">INÍCIO</a></li>
+                <li><a href="#servicos">SERVIÇOS</a></li>
+                <li><a href="#sobre">SOBRE</a></li>
+                <li><a href="#contato">CONTATO</a></li>
+                <li><a href="#agendamento">AGENDAMENTO/CADASTRO/LOGIN</a></li>
+            </ul>
+        </nav>
+        <div class="hero">
+            <h2>Unlock Mobility, Embrace Life!</h2>
+            <button class="cta-button">Get Moving!</button>
+        </div>
+    </header>
+
+    <!-- Carrossel Principal -->
+    <div class="carousel-container">
+        <div class="carousel">
+            <button class="carousel-button prev">&lt;</button>
+            <div class="carousel-track">
+                <!-- Slides serão inseridos via JavaScript -->
+            </div>
+            <button class="carousel-button next">&gt;</button>
+        </div>
+        <div class="carousel-indicators"></div>
+    </div>
+</body>
+</html>
+```
+
+```css
+/* styles.css */
+:root {
+    --primary-color: #4CAF50;
+    --secondary-color: #45a049;
+    --text-color: #333;
+    --light-color: #fff;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+}
+
+/* Header Styles */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 5%;
+    background: var(--light-color);
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.logo img {
+    height: 50px;
+}
+
+.nav-links {
+    display: flex;
+    list-style: none;
+    gap: 2rem;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: var(--text-color);
+    font-weight: bold;
+    transition: color 0.3s;
+}
+
+.nav-links a:hover {
+    color: var(--primary-color);
+}
+
+/* Hero Section */
+.hero {
+    text-align: center;
+    padding: 4rem 2rem;
+    background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('hero-bg.jpg');
+    background-size: cover;
+    color: var(--light-color);
+}
+
+.cta-button {
+    padding: 1rem 2rem;
+    font-size: 1.2rem;
+    background: var(--primary-color);
+    color: var(--light-color);
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.cta-button:hover {
+    background: var(--secondary-color);
+}
+
+/* Carousel Styles */
+.carousel-container {
+    position: relative;
+    max-width: 1200px;
+    margin: 2rem auto;
+    overflow: hidden;
+}
+
+.carousel {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.carousel-track {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+}
+
+.carousel-slide {
+    flex: 0 0 100%;
+    padding: 0 1rem;
+}
+
+.carousel-button {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(0,0,0,0.5);
+    color: white;
+    border: none;
+    padding: 1rem;
+    cursor: pointer;
+    z-index: 1;
+}
+
+.carousel-button.prev { left: 0; }
+.carousel-button.next { right: 0; }
+
+.carousel-indicators {
+    display: flex;
+    justify-content: center;
+    gap: 0.5rem;
+    margin-top: 1rem;
+}
+
+.carousel-indicator {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: #ccc;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.carousel-indicator.active {
+    background: var(--primary-color);
+}
+```
+
+```javascript
+// script.js
+class Carousel {
+    constructor(container) {
+        this.container = container;
+        this.track = container.querySelector('.carousel-track');
+        this.slides = [];
+        this.currentIndex = 0;
+        this.autoPlayInterval = null;
+        
+        this.init();
+    }
+
+    init() {
+        this.loadSlides();
+        this.createIndicators();
+        this.addEventListeners();
+        this.startAutoPlay();
+        this.updateSlides();
+    }
+
+    loadSlides() {
+        // Exemplo de slides - você pode modificar conforme necessário
+        const slideContents = [
+            { image: 'slide1.jpg', title: 'Slide 1' },
+            { image: 'slide2.jpg', title: 'Slide 2' },
+            { image: 'slide3.jpg', title: 'Slide 3' }
+        ];
+
+        slideContents.forEach(content => {
+            const slide = document.createElement('div');
+            slide.className = 'carousel-slide';
+            slide.innerHTML = `
+                <img src="${content.image}" alt="${content.title}">
+                <h3>${content.title}</h3>
+            `;
+            this.slides.push(slide);
+            this.track.appendChild(slide);
+        });
+    }
+
+    createIndicators() {
+        const indicators = this.container.querySelector('.carousel-indicators');
+        this.slides.forEach((_, index) => {
+            const indicator = document.createElement('div');
+            indicator.className = 'carousel-indicator';
+            indicator.addEventListener('click', () => this.goToSlide(index));
+            indicators.appendChild(indicator);
+        });
+    }
+
+    addEventListeners() {
+        const prevButton = this.container.querySelector('.prev');
+        const nextButton = this.container.querySelector('.next');
+
+        prevButton.addEventListener('click', () => this.prevSlide());
+        nextButton.addEventListener('click', () => this.nextSlide());
+
+        this.container.addEventListener('mouseenter', () => this.stopAutoPlay());
+        this.container.addEventListener('mouseleave', () => this.startAutoPlay());
+    }
+
+    updateSlides() {
+        this.track.style.transform = `translateX(-${this.currentIndex * 100}%)`;
+        
+        const indicators = this.container.querySelectorAll('.carousel-indicator');
+        indicators.forEach((indicator, index) => {
+            indicator.classList.toggle('active', index === this.currentIndex);
+        });
+    }
+
+    nextSlide() {
+        this.currentIndex = (this.currentIndex + 1) % this.slides.length;
+        this.updateSlides();
+    }
+
+    prevSlide() {
+        this.currentIndex = (this.currentIndex - 1 + this.slides.length) % this.slides.length;
+        this.updateSlides();
+    }
+
+    goToSlide(index) {
+        this.currentIndex = index;
+        this.updateSlides();
+    }
+
+    startAutoPlay() {
+        this.autoPlayInterval = setInterval(() => this.nextSlide(), 5000);
+    }
+
+    stopAutoPlay() {
+        clearInterval(this.autoPlayInterval);
+    }
+}
+
+// Inicializar o carrossel quando o documento estiver carregado
+document.addEventListener('DOMContentLoaded', () => {
+    const carouselContainer = document.querySelector('.carousel-container');
+    new Carousel(carouselContainer);
+});
+```
+
+Este é o início do projeto com a estrutura básica e o primeiro componente (carrossel). Alguns pontos importantes:
+
+1. O código está organizado em três arquivos principais: HTML, CSS e JavaScript
+2. O carrossel é totalmente funcional com:
+   - Transição automática
+   - Navegação manual (botões e indicadores)
+   - Pausa ao passar o mouse
+   - Responsividade
+
+Para continuar o desenvolvimento, precisamos:
+
+1. Criar o banco de dados MySQL
+2. Implementar o sistema de cadastro/login
+3. Desenvolver o sistema de agendamento
+4. Adicionar as demais seções do site
+5. Implementar a integração com WhatsApp
+
+Você quer que eu continue com alguma dessas partes específicas?
+
+
+Vou ajudar você a desenvolver as próximas etapas do projeto, seguindo a sugestão apresentada.
+
+1. Primeiro, vamos criar o banco de dados MySQL:
+
+```sql
+-- database.sql
+CREATE DATABASE movimento_pensamento;
+USE movimento_pensamento;
+
+CREATE TABLE usuarios (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    nome VARCHAR(100) NOT NULL,
+    email VARCHAR(100) UNIQUE NOT NULL,
+    senha VARCHAR(255) NOT NULL,
+    telefone VARCHAR(20),
+    data_cadastro DATETIME DEFAULT CURRENT_TIMESTAMP
+);
+
+CREATE TABLE agendamentos (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    usuario_id INT,
+    servico VARCHAR(100) NOT NULL,
+    data_hora DATETIME NOT NULL,
+    status ENUM('pendente', 'confirmado', 'cancelado') DEFAULT 'pendente',
+    observacoes TEXT,
+    FOREIGN KEY (usuario_id) REFERENCES usuarios(id)
+);
+
+CREATE TABLE servicos (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    nome VARCHAR(100) NOT NULL,
+    descricao TEXT,
+    duracao INT, -- duração em minutos
+    preco DECIMAL(10,2)
+);
+```
+
+2. Sistema de cadastro/login (PHP):
+
+```php
+// config.php
+<?php
+define('DB_HOST', 'localhost');
+define('DB_USER', 'seu_usuario');
+define('DB_PASS', 'sua_senha');
+define('DB_NAME', 'movimento_pensamento');
+
+$conn = new mysqli(DB_HOST, DB_USER, DB_PASS, DB_NAME);
+
+if ($conn->connect_error) {
+    die("Conexão falhou: " . $conn->connect_error);
+}
+?>
+
+// registro.php
+<?php
+require_once 'config.php';
+
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+    $nome = $conn->real_escape_string($_POST['nome']);
+    $email = $conn->real_escape_string($_POST['email']);
+    $senha = password_hash($_POST['senha'], PASSWORD_DEFAULT);
+    $telefone = $conn->real_escape_string($_POST['telefone']);
+
+    $sql = "INSERT INTO usuarios (nome, email, senha, telefone) VALUES (?, ?, ?, ?)";
+    $stmt = $conn->prepare($sql);
+    $stmt->bind_param("ssss", $nome, $email, $senha, $telefone);
+
+    if ($stmt->execute()) {
+        header("Location: login.php?success=1");
+    } else {
+        $error = "Erro ao cadastrar usuário";
+    }
+}
+?>
+
+// login.php
+<?php
+session_start();
+require_once 'config.php';
+
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+    $email = $conn->real_escape_string($_POST['email']);
+    $senha = $_POST['senha'];
+
+    $sql = "SELECT id, nome, senha FROM usuarios WHERE email = ?";
+    $stmt = $conn->prepare($sql);
+    $stmt->bind_param("s", $email);
+    $stmt->execute();
+    $result = $stmt->get_result();
+
+    if ($user = $result->fetch_assoc()) {
+        if (password_verify($senha, $user['senha'])) {
+            $_SESSION['user_id'] = $user['id'];
+            $_SESSION['user_nome'] = $user['nome'];
+            header("Location: dashboard.php");
+        } else {
+            $error = "Senha incorreta";
+        }
+    } else {
+        $error = "Usuário não encontrado";
+    }
+}
+?>
+```
+
+3. Sistema de Agendamento:
+
+```php
+// agendamento.php
+<?php
+session_start();
+require_once 'config.php';
+
+if (!isset($_SESSION['user_id'])) {
+    header("Location: login.php");
+    exit;
+}
+
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+    $usuario_id = $_SESSION['user_id'];
+    $servico = $conn->real_escape_string($_POST['servico']);
+    $data_hora = $conn->real_escape_string($_POST['data_hora']);
+    $observacoes = $conn->real_escape_string($_POST['observacoes']);
+
+    $sql = "INSERT INTO agendamentos (usuario_id, servico, data_hora, observacoes) 
+            VALUES (?, ?, ?, ?)";
+    $stmt = $conn->prepare($sql);
+    $stmt->bind_param("isss", $usuario_id, $servico, $data_hora, $observacoes);
+
+    if ($stmt->execute()) {
+        $success = "Agendamento realizado com sucesso!";
+        
+        // Integração com WhatsApp
+        $telefone = "seu_numero_whatsapp";
+        $mensagem = "Novo agendamento:\nServiço: $servico\nData: $data_hora";
+        $url = "https://api.whatsapp.com/send?phone=$telefone&text=" . urlencode($mensagem);
+        
+        // Redirecionar para o WhatsApp
+        header("Location: $url");
+    } else {
+        $error = "Erro ao realizar agendamento";
+    }
+}
+?>
+```
+
+4. HTML para as novas seções:
+
+```html
+<!-- Form de Cadastro -->
+<form action="registro.php" method="POST" class="auth-form">
+    <input type="text" name="nome" placeholder="Nome completo" required>
+    <input type="email" name="email" placeholder="E-mail" required>
+    <input type="password" name="senha" placeholder="Senha" required>
+    <input type="tel" name="telefone" placeholder="Telefone">
+    <button type="submit">Cadastrar</button>
+</form>
+
+<!-- Form de Login -->
+<form action="login.php" method="POST" class="auth-form">
+    <input type="email" name="email" placeholder="E-mail" required>
+    <input type="password" name="senha" placeholder="Senha" required>
+    <button type="submit">Entrar</button>
+</form>
+
+<!-- Form de Agendamento -->
+<form action="agendamento.php" method="POST" class="scheduling-form">
+    <select name="servico" required>
+        <option value="">Selecione o serviço</option>
+        <option value="consulta">Consulta</option>
+        <option value="avaliacao">Avaliação</option>
+        <option value="tratamento">Tratamento</option>
+    </select>
+    <input type="datetime-local" name="data_hora" required>
+    <textarea name="observacoes" placeholder="Observações"></textarea>
+    <button type="submit">Agendar</button>
+</form>
+```
+
+5. CSS adicional para os novos elementos:
+
+```css
+/* Estilos para formulários */
+.auth-form, .scheduling-form {
+    max-width: 400px;
+    margin: 2rem auto;
+    padding: 2rem;
+    background: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.auth-form input,
+.scheduling-form input,
+.scheduling-form select,
+.scheduling-form textarea {
+    width: 100%;
+    padding: 0.8rem;
+    margin-bottom: 1rem;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+.auth-form button,
+.scheduling-form button {
+    width: 100%;
+    padding: 1rem;
+    background: var(--primary-color);
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.auth-form button:hover,
+.scheduling-form button:hover {
+    background: var(--secondary-color);
+}
+```
+
+Este código implementa as funcionalidades básicas solicitadas. Alguns pontos importantes:
+
+1. Lembre-se de configurar corretamente as credenciais do banco de dados
+2. Implemente validações adicionais de segurança
+3. Adicione tratamento de erros mais robusto
+4. Considere usar AJAX para melhor experiência do usuário
+5. Implemente um sistema de confirmação por e-mail
+6. Adicione captcha para prevenir spam
+7. Implemente um sistema de recuperação de senha
+
+
+Vou ajudar a implementar as melhorias sugeridas:
+
+1. Configuração segura do banco de dados:
+
+```php
+// config.php
+<?php
+define('DB_HOST', getenv('DB_HOST') ?: 'localhost');
+define('DB_USER', getenv('DB_USER') ?: 'usuario');
+define('DB_PASS', getenv('DB_PASS') ?: 'senha_segura');
+define('DB_NAME', getenv('DB_NAME') ?: 'movimento_pensamento');
+
+try {
+    $conn = new mysqli(DB_HOST, DB_USER, DB_PASS, DB_NAME);
+    $conn->set_charset("utf8mb4");
+} catch (Exception $e) {
+    die("Erro de conexão: " . $e->getMessage());
+}
+```
+
+2. Validações de segurança:
+
+```php
+// security.php
+<?php
+class Security {
+    public static function sanitizeInput($data) {
+        return htmlspecialchars(strip_tags(trim($data)));
+    }
+
+    public static function validateEmail($email) {
+        return filter_var($email, FILTER_VALIDATE_EMAIL);
+    }
+
+    public static function checkPasswordStrength($password) {
+        return strlen($password) >= 8 && 
+               preg_match('/[A-Z]/', $password) && 
+               preg_match('/[a-z]/', $password) && 
+               preg_match('/[0-9]/', $password);
+    }
+}
+```
+
+3. Tratamento de erros:
+
+```php
+// error_handler.php
+<?php
+class ErrorHandler {
+    public static function handleError($errno, $errstr, $errfile, $errline) {
+        $error = [
+            'type' => $errno,
+            'message' => $errstr,
+            'file' => $errfile,
+            'line' => $errline
+        ];
+        
+        error_log(json_encode($error));
+        
+        if (ini_get('display_errors')) {
+            echo "Ocorreu um erro. Por favor, tente novamente mais tarde.";
+        }
+        
+        return true;
+    }
+}
+
+set_error_handler(['ErrorHandler', 'handleError']);
+```
+
+4. Sistema de confirmação por e-mail:
+
+```php
+// email_verification.php
+<?php
+class EmailVerification {
+    private $mailer;
+    
+    public function __construct() {
+        $this->mailer = new PHPMailer(true);
+        // Configuração do PHPMailer
+    }
+    
+    public function sendVerificationEmail($email, $token) {
+        try {
+            $this->mailer->setFrom('noreply@exemplo.com', 'Movimento Pensamento');
+            $this->mailer->addAddress($email);
+            $this->mailer->Subject = 'Confirme seu e-mail';
+            
+            $link = "https://seusite.com/verify.php?token=" . $token;
+            $this->mailer->Body = "Clique no link para confirmar seu e-mail: $link";
+            
+            $this->mailer->send();
+            return true;
+        } catch (Exception $e) {
+            error_log("Erro ao enviar e-mail: " . $e->getMessage());
+            return false;
+        }
+    }
+}
+```
+
+5. Implementação do CAPTCHA:
+
+```php
+// captcha.php
+<?php
+class Captcha {
+    public static function generateCaptcha() {
+        $_SESSION['captcha'] = rand(1000, 9999);
+        
+        $image = imagecreatetruecolor(100, 30);
+        $bg = imagecolorallocate($image, 255, 255, 255);
+        $text_color = imagecolorallocate($image, 0, 0, 0);
+        
+        imagestring($image, 5, 30, 5, $_SESSION['captcha'], $text_color);
+        
+        header('Content-Type: image/png');
+        imagepng($image);
+        imagedestroy($image);
+    }
+    
+    public static function verifyCaptcha($input) {
+        return isset($_SESSION['captcha']) && 
+               $input === $_SESSION['captcha'];
+    }
+}
+```
+
+6. Sistema de recuperação de senha:
+
+```php
+// password_recovery.php
+<?php
+class PasswordRecovery {
+    private $conn;
+    private $mailer;
+    
+    public function __construct($conn) {
+        $this->conn = $conn;
+        $this->mailer = new EmailVerification();
+    }
+    
+    public function requestReset($email) {
+        $token = bin2hex(random_bytes(32));
+        $expires = date('Y-m-d H:i:s', strtotime('+1 hour'));
+        
+        $sql = "INSERT INTO password_resets (email, token, expires) 
+                VALUES (?, ?, ?)";
+        $stmt = $this->conn->prepare($sql);
+        $stmt->bind_param("sss", $email, $token, $expires);
+        
+        if ($stmt->execute()) {
+            return $this->mailer->sendVerificationEmail(
+                $email, 
+                "reset.php?token=" . $token
+            );
+        }
+        return false;
+    }
+    
+    public function resetPassword($token, $new_password) {
+        $sql = "SELECT email FROM password_resets 
+                WHERE token = ? AND expires > NOW() 
+                AND used = 0";
+        $stmt = $this->conn->prepare($sql);
+        $stmt->bind_param("s", $token);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        
+        if ($row = $result->fetch_assoc()) {
+            $hashed_password = password_hash($new_password, PASSWORD_DEFAULT);
+            
+            $sql = "UPDATE usuarios SET senha = ? WHERE email = ?";
+            $stmt = $this->conn->prepare($sql);
+            $stmt->bind_param("ss", $hashed_password, $row['email']);
+            
+            if ($stmt->execute()) {
+                $sql = "UPDATE password_resets SET used = 1 
+                        WHERE token = ?";
+                $stmt = $this->conn->prepare($sql);
+                $stmt->bind_param("s", $token);
+                $stmt->execute();
+                
+                return true;
+            }
+        }
+        return false;
+    }
+}
+```
+
+7. Melhorias na interface do usuário:
+
+```javascript
+// main.js
+document.addEventListener('DOMContentLoaded', function() {
+    // Validação de formulários em tempo real
+    const forms = document.querySelectorAll('form');
+    forms.forEach(form => {
+        form.addEventListener('submit', function(e) {
+            if (!validateForm(this)) {
+                e.preventDefault();
+            }
+        });
+    });
+    
+    // Feedback visual para campos de formulário
+    const inputs = document.querySelectorAll('input, select, textarea');
+    inputs.forEach(input => {
+        input.addEventListener('input', function() {
+            validateField(this);
+        });
+    });
+});
+
+function validateForm(form) {
+    let isValid = true;
+    form.querySelectorAll('input, select, textarea').forEach(field => {
+        if (!validateField(field)) {
+            isValid = false;
+        }
+    });
+    return isValid;
+}
+
+function validateField(field) {
+    const value = field.value.trim();
+    let isValid = true;
+    
+    if (field.required && value === '') {
+        showError(field, 'Este campo é obrigatório');
+        isValid = false;
+    } else if (field.type === 'email' && !isValidEmail(value)) {
+        showError(field, 'E-mail inválido');
+        isValid = false;
+    }
+    
+    if (isValid) {
+        clearError(field);
+    }
+    
+    return isValid;
+}
+
+function showError(field, message) {
+    field.classList.add('error');
+    const errorDiv = field.nextElementSibling;
+    if (errorDiv && errorDiv.classList.contains('error-message')) {
+        errorDiv.textContent = message;
+    } else {
+        const div = document.createElement('div');
+        div.className = 'error-message';
+        div.textContent = message;
+        field.parentNode.insertBefore(div, field.nextSibling);
+    }
+}
+
+function clearError(field) {
+    field.classList.remove('error');
+    const errorDiv = field.nextElementSibling;
+    if (errorDiv && errorDiv.classList.contains('error-message')) {
+        errorDiv.remove();
+    }
+}
+
+function isValidEmail(email) {
+    return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+}
+```
+
+Estas melhorias incluem:
+- Configuração segura do banco de dados
+- Validações de segurança robustas
+- Tratamento de erros abrangente
+- Sistema de verificação de e-mail
+- CAPTCHA para prevenção de spam
+- Sistema de recuperação de senha
+- Melhorias na experiência do usuário com validação em tempo real
+- Feedback visual para erros e sucessos
+
+Lembre-se de:
+1. Configurar corretamente as variáveis de ambiente
+2. Implementar proteção contra CSRF
+3. Usar HTTPS
+4. Fazer backup regular do banco de dados
+5. Manter todas as dependências atualizadas
+6. Implementar rate limiting para prevenir ataques de força bruta

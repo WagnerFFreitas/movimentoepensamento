@@ -1,0 +1,100 @@
+Descrição do Projeto:  
+Desenvolva um site com a mesma estrutura apresentada no vídeo fornecido, utilizando somente HTML, CSS e JavaScript para a interface e MySQL para o banco de dados. O site deve incluir os seguintes elementos:
+
+1. Efeito de Carrossel (Geral):  
+- Reproduza o carrossel de imagens ou elementos como mostrado no vídeo.  
+- Automático e Interativo:  
+  - Transições automáticas entre os itens do carrossel.  
+  - Ao passar o mouse sobre as setas nas extremidades ou clicar nos indicadores (círculos) abaixo do carrossel, permita navegar manualmente entre os itens.  
+  - Destaque visual ao passar o mouse sobre os indicadores ou as setas de navegação.  
+
+2. Cadastro com Banco de Dados para Pacientes:  
+- Crie um banco de dados em MySQL com os seguintes campos:  
+  - Nome, Endereço, Bairro, Cidade, UF, CEP, Telefone, Email, Avaliação (opção de marcar), Atendimento (opção de marcar), CPF, Avaliação (histórico) e Evolução (histórico).  
+- Permita que os pacientes façam cadastro com as seguintes informações:  
+  - Nome, Email, Telefone e Senha.  
+  - Pacientes devem poder consultar seus próprios agendamentos e visualizar a tabela de agendamentos disponíveis.  
+- Efeito Carrossel Automático:  
+  - Durante a consulta dos agendamentos, exiba os próximos agendamentos do paciente em um carrossel automático com os horários e datas marcados.  
+
+ 3. Agendamento e Login:  
+- Pacientes poderão realizar login para acessar o sistema.  
+- O sistema deverá:  
+  - Permitir ao paciente agendar atendimentos com seleção de datas e horários disponíveis.  
+  - Mostrar uma tabela com os agendamentos do paciente logo após salvar o agendamento.  
+  - Liberar apenas as datas e horários não ocupados por outros pacientes.  
+- Para cada agendamento, o paciente poderá especificar:  
+  - Tipo de atendimento: Avaliação ou Atendimento.  
+  - Uma mensagem adicional.  
+- Apenas administradores terão permissão para editar, excluir ou aprovar agendamentos.  
+
+ 4. Notificações via WhatsApp:  
+- Sempre que houver alteração na agenda ou confirmação de agendamento, envie automaticamente uma mensagem para o WhatsApp da clínica.  
+
+ 5. Opção de Imprimir a Ficha do Paciente:  
+- Inclua uma funcionalidade para que os administradores possam imprimir a ficha completa de qualquer paciente diretamente pelo sistema.  
+- Efeito Carrossel:  
+  - Adicione um carrossel automático para navegar entre as fichas de pacientes cadastrados.  
+  - Permita navegar manualmente ao passar o mouse sobre as setas nas extremidades ou clicando nos círculos abaixo do carrossel.  
+
+ 6. Mapa com Localização da Clínica:  
+- Inclua o mapa com a localização exata da clínica, utilizando o link fornecido:  
+  - [https://maps.app.goo.gl/o79vpjzfH9N7PJAA7](https://maps.app.goo.gl/o79vpjzfH9N7PJAA7).  
+
+ 7. Apresentação dos Profissionais (Carrossel Automático):  
+- Crie uma seção no site para apresentar os três profissionais da clínica.  
+- Use um carrossel automático com texto descrevendo cada profissional.  
+  - Uma tela dedicada para cada profissional.  
+  - Quando o paciente clicar em um dos três círculos abaixo do carrossel, a transição manual deve ocorrer para a descrição correspondente.  
+  - Destaque visual ao passar o mouse sobre os círculos indicadores.  
+
+ 8. Tecnologias e Restrições:  
+- HTML, CSS e JavaScript exclusivamente para a interface.  
+- MySQL para gerenciamento de dados.  
+- Use PHP ou Node.js apenas como uma camada de integração entre o frontend e o banco de dados.  
+- O site deve ser:  
+  - Visualmente atraente.  
+  - Fácil de usar tanto para os pacientes quanto para os administradores.  
+Descrição do designer do site:
+1. Cabeçalho Principal
+- Logo e Nome do Site: Localizado no canto superior esquerdo com o nome "Movimento e Pensamento".
+- Menu de Navegação: Contém links para "INÍCIO", "SERVIÇOS", "SOBRE", "CONTATO" e "AGENDAMENTO/CADASTRO/LOGIN".
+- Slogan e Imagem Principal: Apresenta o texto principal, "Unlock Mobility, Embrace Life!", com uma imagem de fundo representando uma sessão de fisioterapia.
+- Botão de Ação: Um botão verde com o texto "Get Moving!" para incentivar a interação.
+2. Seção de Logos
+- Inclui três logos no centro, simbolizando marcas ou parceiros do serviço.
+- Efeito de Movimento: As logos se movimentam automaticamente da esquerda para a direita, criando um efeito dinâmico na apresentação dos parceiros.
+3. Seção de Serviços
+- Apresenta três cartões com imagens, títulos e descrições:
+  - Advanced Muscle Therapy: Tratamento direcionado para fortalecimento muscular.
+  - Post-Surgery Rehabilitation: Reabilitação para pós-operatório.
+  - Chronic Pain Management: Terapia especializada em dor crônica.
+4. Seção "About Us"
+- Composta por uma imagem à esquerda e texto explicativo à direita.
+- Destaca a missão e os valores da clínica, além de incluir um botão "Contact" para ações futuras.
+5. Galeria de Imagens
+- Mostra imagens relacionadas ao atendimento, exibindo técnicas e ambientes da clínica.
+- Efeito Carrossel: 
+  - As imagens mudam automaticamente.
+  - É possível navegar manualmente passando o mouse sobre as setas nas extremidades (símbolos "<" e ">").
+  - Outra opção é clicar em um dos seis círculos abaixo do carrossel para selecionar a imagem desejada.
+6. Seção "More Info"
+- Exibe três cartões de planos e preços:
+  - Basic Physiotherapy Session: $120 por sessão, com descrição das opções de atendimento básico.
+  - Specialized Physiotherapy Session: $220 por sessão, destacando atendimento especializado.
+  - **Comprehensive Physiotherapy Plan**: $1800 por mês, oferecendo planos completos.
+- Cada cartão possui um botão verde "More info".
+7. Depoimentos
+- Uma área com um carrossel de depoimentos. 
+- Efeito Carrossel: 
+  - Os depoimentos mudam automaticamente.
+  - Também é possível navegar passando o mouse sobre as setas nas extremidades (símbolos "<" e ">").
+  - Alternativamente, clicar em um dos três círculos abaixo do carrossel permite selecionar um depoimento específico.
+  - Texto dos Profissionais: Em cada transição de depoimento, será exibido o texto detalhado de um dos profissionais da clínica, reforçando a confiança e a qualidade do atendimento.
+8. Formulário de Contato
+- Inclui campos para "Name", "Email" e "Message".
+- Botão "Submit" em verde para enviar o formulário.
+- Aviso de proteção por reCAPTCHA.
+9. Localização**
+- Mostra um mapa indicando a localização da clínica: "Duque de Caxias, RJ, Brasil".
+- Rodapé com direitos reservados: "© 2024 Movimento e Pensamento".
