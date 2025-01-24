@@ -13,12 +13,9 @@ const auth = {
                 const data = await response.json();
                 this.setToken(data.token);
                 window.location.href = '../pages/dashboard.html';
-            } else {
-                alert('Email ou senha inválidos');
             }
         } catch (error) {
             console.error('Erro no login:', error);
-            alert('Erro ao fazer login');
         }
     },
 
@@ -39,7 +36,7 @@ const auth = {
 };
 
 // Event Listeners
-document.getElementById('formLogin')?.addEventListener('submit', async (e) => {
+document.getElementById('loginForm')?.addEventListener('submit', async (e) => {
     e.preventDefault();
     const email = document.getElementById('email').value;
     const senha = document.getElementById('senha').value;

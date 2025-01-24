@@ -10,7 +10,7 @@ const dashboard = {
 
     async carregarEstatisticas() {
         try {
-            // Simulação de dados - substituir por chamada real à API
+            // Simulação de dados - substituir por API real
             const stats = {
                 totalPacientes: 150,
                 consultasHoje: 25,

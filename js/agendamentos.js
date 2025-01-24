@@ -1,23 +1,12 @@
 const agendamentoService = {
     async listarAgendamentos() {
         try {
-            // Simulação - substituir por API real
-            return [
-                { 
-                    id: 1, 
-                    paciente: 'João Silva',
-                    data: '2024-03-20',
-                    hora: '14:30',
-                    status: 'confirmado'
-                },
-                { 
-                    id: 2, 
-                    paciente: 'Maria Santos',
-                    data: '2024-03-21',
-                    hora: '10:00',
-                    status: 'pendente'
+            const response = await fetch('/api/agendamentos', {
+                headers: {
+                    'Authorization': `Bearer ${auth.token}`
                 }
-            ];
+            });
+            return await response.json();
         } catch (error) {
             console.error('Erro ao listar agendamentos:', error);
             return [];
@@ -26,9 +15,15 @@ const agendamentoService = {
 
     async salvarAgendamento(agendamento) {
         try {
-            // Simulação - substituir por API real
-            console.log('Agendamento salvo:', agendamento);
-            return { success: true, message: 'Agendamento realizado com sucesso!' };
+            const response = await fetch('/api/agendamentos', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${auth.token}`
+                },
+                body: JSON.stringify(agendamento)
+            });
+            return await response.json();
         } catch (error) {
             console.error('Erro ao salvar agendamento:', error);
             return { success: false, message: 'Erro ao realizar agendamento.' };
@@ -38,7 +33,6 @@ const agendamentoService = {
 
 // Funções UI
 function showModalAgendamento() {
-    carregarPacientes();
     document.getElementById('modalAgendamento').style.display = 'block';
 }
 
@@ -74,19 +68,4 @@ document.addEventListener('DOMContentLoaded', () => {
         return;
     }
     carregarAgendamentos();
-});
-
-document.getElementById('formAgendamento')?.addEventListener('submit', async (e) => {
-    e.preventDefault();
-    const agendamento = {
-        paciente_id: document.getElementById('paciente').value,
-        data: document.getElementById('data').value,
-        hora: document.getElementById('hora').value
-    };
-    const result = await agendamentoService.salvarAgendamento(agendamento);
-    if (result.success) {
-        closeModal();
-        carregarAgendamentos();
-    }
-    alert(result.message);
 });

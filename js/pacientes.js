@@ -1,11 +1,12 @@
 const pacienteService = {
     async listarPacientes() {
         try {
-            // Simulação de dados - substituir por API real
-            return [
-                { id: 1, nome: 'João Silva', cpf: '123.456.789-00', email: 'joao@email.com', telefone: '(11) 99999-9999' },
-                { id: 2, nome: 'Maria Santos', cpf: '987.654.321-00', email: 'maria@email.com', telefone: '(11) 88888-8888' }
-            ];
+            const response = await fetch('/api/pacientes', {
+                headers: {
+                    'Authorization': `Bearer ${auth.token}`
+                }
+            });
+            return await response.json();
         } catch (error) {
             console.error('Erro ao listar pacientes:', error);
             return [];
@@ -14,9 +15,15 @@ const pacienteService = {
 
     async salvarPaciente(paciente) {
         try {
-            // Simulação - substituir por API real
-            console.log('Paciente salvo:', paciente);
-            return { success: true, message: 'Paciente salvo com sucesso!' };
+            const response = await fetch('/api/pacientes', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${auth.token}`
+                },
+                body: JSON.stringify(paciente)
+            });
+            return await response.json();
         } catch (error) {
             console.error('Erro ao salvar paciente:', error);
             return { success: false, message: 'Erro ao salvar paciente.' };
@@ -57,20 +64,4 @@ document.addEventListener('DOMContentLoaded', () => {
         return;
     }
     carregarPacientes();
-});
-
-document.getElementById('formPaciente')?.addEventListener('submit', async (e) => {
-    e.preventDefault();
-    const paciente = {
-        nome: document.getElementById('nome').value,
-        cpf: document.getElementById('cpf').value,
-        email: document.getElementById('email').value,
-        telefone: document.getElementById('telefone').value
-    };
-    const result = await pacienteService.salvarPaciente(paciente);
-    if (result.success) {
-        closeModal();
-        carregarPacientes();
-    }
-    alert(result.message);
 });
