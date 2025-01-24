@@ -1,0 +1,16 @@
+d:\movimentoepensamento\clinica\
+├── index.html
+├── /css
+│   └── style.css
+├── /js
+│   ├── auth.js
+│   ├── pacientes.js
+│   ├── agendamentos.js
+│   └── prontuarios.js
+├── /database
+│   └── schema.sql
+└── /pages
+    ├── login.html
+    ├── dashboard.html
+    ├── pacientes.html
+    └── agendamentos.html

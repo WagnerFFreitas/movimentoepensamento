@@ -1,200 +1,26 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Movimento e Pensamento</title>
-    <link rel="stylesheet" href="style.css">
+    <title>Clínica Médica</title>
+    <link rel="stylesheet" href="/css/style.css">
 </head>
 <body>
-    <header>
-        <nav>
+    <nav class="navbar">
+        <div class="container">
             <ul>
-                <li><a href="#">Customize</a></li>
-                <li><a href="#">Pages</a></li>
-                <li><a href="#">Help</a></li>
-                <li><a href="#">Home</a></li>
-                <li><a href="#">Preview</a></li>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="/pages/login.html">Login</a></li>
+                <li><a href="/pages/agendamentos.html">Agendamentos</a></li>
             </ul>
-        </nav>
-    </header>
-
-    <section id="hero">
-        <div class="hero-content">
-            <h1>Unlock Mobility, Embrace Life!</h1>
-            <p>Experience freedom of movement in Duque de Caxias! Our expert therapy brings vitality back to your life. Start today!</p>
         </div>
-        <!-- Image/Video Background (CSS) -->
-    </section>
+    </nav>
 
-    <section id="logos">
-        <div class="logos-container">
-            <img src="https://via.placeholder.com/150x50/cccccc/000000?text=Logo+1" alt="Logo 1">
-            <img src="https://via.placeholder.com/150x50/aaaaaa/000000?text=Logo+2" alt="Logo 2">
-            <img src="https://via.placeholder.com/150x50/bbbbbb/000000?text=Logo+3" alt="Logo 3">
-            <img src="https://via.placeholder.com/150x50/dddddd/000000?text=Logo+4" alt="Logo 4">
-        </div>
-    </section>
+    <div class="container">
+        <h1>Bem-vindo à Clínica</h1>
+    </div>
 
-    <section id="services">
-        <h2>Our Services</h2>
-        <div class="service-cards">
-            <div>
-                <h3>Advanced Muscle Therapy</h3>
-                <p>Experience targeted treatment for muscle tension and discomfort, tailored to promote optimal recovery.</p>
-            </div>
-            <div>
-                <h3>Post-Surgery Rehabilitation</h3>
-                <p>Accelerate your healing journey with personalized care plans designed to support post-operative recovery.</p>
-            </div>
-            <div>
-                <h3>Chronic Pain Management</h3>
-                <p>Alleviate persistent pain with specialized therapies aimed at enhancing life quality and mobility.</p>
-            </div>
-        </div>
-    </section>
-
-    <section id="about-us">
-        <h2>About us</h2>
-        <p>At Movimento e Pensamento, we are dedicated to providing top-quality physiotherapy services aimed at improving your overall wellbeing. Our experienced professionals specialize in personalized treatments designed to help you recover from injuries, manage chronic conditions, and enhance physical performance.</p>
-        <p>Our clinic offers a supportive and welcoming environment where every patient receives individualized care. Utilizing state-of-the-art techniques and equipment, we are committed to helping you achieve a healthier, more active lifestyle.</p>
-        <button id="contact-button">Contact</button>
-    </section>
-
-    <section id="image-carousel">
-        <div class="carousel-container">
-            <button class="carousel-prev">&lt;</button>
-            <div class="carousel-track">
-                <img src="https://via.placeholder.com/800x400/cccccc/000000?text=Image+1" alt="Image 1">
-                <img src="https://via.placeholder.com/800x400/aaaaaa/000000?text=Image+2" alt="Image 2">
-                <img src="https://via.placeholder.com/800x400/bbbbbb/000000?text=Image+3" alt="Image 3">
-            </div>
-            <button class="carousel-next">&gt;</button>
-            <div class="carousel-dots"></div>
-        </div>
-    </section>
-
-    <section id="more-info">
-        <h2>More info</h2>
-        <div class="info-cards">
-            <div>
-                <h3>Basic Physiotherapy Session</h3>
-                <p>$120 per session</p>
-                <p>Ideal for those requiring general physiotherapy care. Includes an initial assessment and basic treatment.</p>
-                <ul>
-                    <li>General care</li>
-                    <li>Initial assessment</li>
-                </ul>
-                <button>More Info</button>
-            </div>
-            <div class="popular">
-                <h3>Specialized Physiotherapy Session</h3>
-                <p>$220 per session</p>
-                <p>Perfect for targeted physiological issues. Involves deep tissue work and tailored exercise routines.</p>
-                <ul>
-                    <li>Deep tissue</li>
-                    <li>Tailored exercises</li>
-                </ul>
-                <button>More Info</button>
-            </div>
-            <div>
-                <h3>Comprehensive Physiotherapy Plan</h3>
-                 <p>$1800 per month</p>
-                <p>A monthly package for intensive recovery and rehabilitation. Includes personalized treatment plans and regular sessions.</p>
-                <ul>
-                    <li>Intensive rehab</li>
-                    <li>Regular sessions</li>
-                </ul>
-                <button>More Info</button>
-            </div>
-        </div>
-    </section>
-
-     <section id="testimonials">
-        <h2>Testimonials</h2>
-        <div class="testimonial-slider">
-          <div class="testimonial active">
-                <p>Movimento e Pensamento is outstanding! Their team provided exceptional physiotherapy that greatly improved my mobility. The staff is compassionate and highly skilled. I am truly thankful for their support and recommend them to anyone seeking quality care in Duque de Caxias. Thank you so much!</p>
-                <p>- Ana</p>
-            </div>
-             <div class="testimonial">
-                <p>I am very happy with the service. I was in a lot of pain and they made sure I was comfortable with my treatment. The staff were very friendly and I felt very welcome. I am very thankful for their support.</p>
-                <p>- John</p>
-            </div>
-           <div class="testimonial">
-                <p>The staff were very knowledgeable and friendly. They made me feel at ease and I felt that they were listening to my concerns. I was very happy with the service and would recommend it to anyone.</p>
-                <p>- Mary</p>
-            </div>
-        </div>
-    </section>
-
-    <section id="contact-form">
-        <h2>Get In Touch Today</h2>
-        <form id="contactForm">
-            <input type="text" id="name" placeholder="Name" required>
-            <input type="email" id="email" placeholder="Email" required>
-            <textarea id="message" placeholder="Message"></textarea>
-            <button type="submit">Submit</button>
-        </form>
-    </section>
-
-    <section id="location">
-        <h2>Location</h2>
-        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3678.9574460888816!2d-43.3110699850681!3d-22.775180385087043!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x9963978d516595%3A0x98c24b39499a938a!2sMovimento%20e%20Pensamento!5e0!3m2!1sen!2sus!4v1708000000000!5m2!1sen!2sus" width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-        <p>Duque de Caxias, RJ, Brasil</p>
-    </section>
-
-   <section id="patient-portal" style="display: none;">
-        <h2>Patient Portal</h2>
-        <div id="patient-info"></div>
-        <h3>Schedule Appointment</h3>
-        <div id="calendar"></div>
-        <select id="appointment-type">
-            <option value="avaliacao">Avaliação</option>
-            <option value="atendimento">Atendimento</option>
-        </select>
-        <textarea id="appointment-message" placeholder="Optional message"></textarea>
-        <button id="save-appointment">Save Appointment</button>
-        <h3>Your Appointments</h3>
-        <table id="appointments-table">
-            <thead>
-                <tr>
-                    <th>Name</th>
-                    <th>Date & Time</th>
-                    <th>Type</th>
-                    <th>Message</th>
-                </tr>
-            </thead>
-            <tbody></tbody>
-        </table>
-    </section>
-
-    <section id="login-register">
-        <h2>Login / Register</h2>
-        <div id="login-form">
-            <h3>Login</h3>
-            <input type="email" id="login-email" placeholder="Email" required>
-            <input type="password" id="login-password" placeholder="Password" required>
-            <button id="login-button">Login</button>
-        </div>
-        <div id="register-form">
-            <h3>Register</h3>
-            <input type="text" id="register-name" placeholder="Name" required>
-            <input type="email" id="register-email" placeholder="Email" required>
-            <input type="tel" id="register-phone" placeholder="Phone">
-             <input type="password" id="register-password" placeholder="Password" required>
-             <select id="register-role" required>
-                <option value="patient">Patient</option>
-                <option value="admin">Admin</option>
-            </select>
-            <button id="register-button">Register</button>
-        </div>
-    </section>
-
-    <footer>
-        <p>&copy; 2024 Movimento e Pensamento. Made with Clideo.</p>
-    </footer>
-
-    <script src="script.js"></script>
+    <script src="/js/auth.js"></script>
 </body>
 </html>

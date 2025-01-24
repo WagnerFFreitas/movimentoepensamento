@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - Clínica Médica</title>
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="container">
+            <ul>
+                <li><a href="dashboard.html">Dashboard</a></li>
+                <li><a href="pacientes.html">Pacientes</a></li>
+                <li><a href="agendamentos.html">Agendamentos</a></li>
+                <li><a href="#" id="btnLogout">Sair</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="container">
+        <h1>Dashboard</h1>
+        <div class="dashboard-grid">
+            <div class="card">
+                <h3>Total de Pacientes</h3>
+                <p id="totalPacientes">0</p>
+            </div>
+            <div class="card">
+                <h3>Consultas Hoje</h3>
+                <p id="consultasHoje">0</p>
+            </div>
+            <div class="card">
+                <h3>Agendamentos Pendentes</h3>
+                <p id="agendamentosPendentes">0</p>
+            </div>
+        </div>
+    </div>
+
+    <script src="../js/auth.js"></script>
+    <script src="../js/dashboard.js"></script>
+</body>
+</html>

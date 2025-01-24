@@ -1,1 +1,0 @@
-// Este arquivo contém o código JavaScript que adiciona interatividade à página, manipulando o DOM e respondendo a eventos.
