@@ -75,7 +75,7 @@ main{
     margin-bottom: 30px;
 }
 
-
+/*
 .logos{
   padding: 2rem 0;
   background-color: #000000;
@@ -88,6 +88,44 @@ main{
 .logos .logo{
   width: 150px;
 }
+*/
+
+.logos {
+    padding: 2rem 0;
+    background-color: #000000;
+    overflow: hidden;
+}
+
+.logos .container {
+    overflow: hidden;
+}
+
+.carousel-logos {
+    display: flex;
+    white-space: nowrap;
+    animation: carousel-scroll 30s linear infinite;
+}
+
+.carousel-slide-logos {
+    flex: 0 0 auto;
+    padding: 0 15px;
+    display: inline-block;
+}
+
+.logos .logo {
+    width: 150px;
+    display: block;
+}
+
+@keyframes carousel-scroll {
+    0% {
+        transform: translateX(calc(-100% + (2*15px))); /* Inicio na direita */
+    }
+    100% {
+        transform: translateX(100%); /* Fim na esquerda */
+    }
+}
+
 
 .services {
     padding: 4rem 0;
