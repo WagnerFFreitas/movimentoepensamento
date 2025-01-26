@@ -1,26 +1,215 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Clínica Médica</title>
     <link rel="stylesheet" href="/css/style.css">
 </head>
-<body>
-    <nav class="navbar">
-        <div class="container">
-            <ul>
-                <li><a href="index.html">Home</a></li>
-                <li><a href="/pages/login.html">Login</a></li>
-                <li><a href="/pages/agendamentos.html">Agendamentos</a></li>
-            </ul>
-        </div>
-    </nav>
 
-    <div class="container">
-        <h1>Bem-vindo à Clínica</h1>
-    </div>
+<body>
+    <header class="header">
+        <nav class="navbar">
+            <div class="container">
+                <ul>
+                    <li><a href="index.html">Movimento e Pensamento</a></li>
+                    <li><a href="#">INÍCIO</a></li>
+                    <li><a href="#">SERVIÇOS</a></li>
+                    <li><a href="#">SOBRE</a></li>
+                    <li><a href="#">CONTATO</a></li>
+                    <li><a href="/pages/login.html">AGENDAMENTO</a><a href="/pages/login.html">CADASTRO/LOGIN</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <section class="hero">
+            <div class="container">
+                <h1>Unlock Mobility,<br> Embrace Life!</h1>
+                <p>Reclaim freedom of movement in Duque de Caxias! Our expert physiotherapy brings vitality back to your life. Start today!</p>
+                <button class="btn btn-primary">Get Moving!</button>
+            </div>
+        </section>
+
+        <section class="logos">
+            <div class="container">
+              <img src="/img/logoipsum.png" alt="Logoipsum" class="logo">
+              <img src="/img/logo.png" alt="Logo" class="logo">
+              <img src="/img/logoipsum2.png" alt="Logoipsum2" class="logo">
+            </div>
+        </section>
+
+        <section class="services">
+          <div class="container">
+            <h2>Services</h2>
+            <div class="services-grid">
+              <div class="service-card">
+                  <img src="/img/fisioterapia03.jpg" alt="Advanced Muscle Therapy">
+                  <h3>Advanced Muscle <br> Therapy</h3>
+                  <p>Experience targeted treatment for muscle tension and discomfort, tailored to promote optimal recovery.</p>
+              </div>
+              <div class="service-card">
+                  <img src="/img/pilates01.webp" alt="Post-Surgery Rehabilitation">
+                  <h3>Post-Surgery <br> Rehabilitation</h3>
+                  <p>Accelerate your healing journey with personalized care plans designed to support post-operative recovery.</p>
+              </div>
+              <div class="service-card">
+                  <img src="/img/pain.jpg" alt="Chronic Pain Management">
+                  <h3>Chronic Pain <br> Management</h3>
+                  <p>Alleviate persistent pain with specialized therapies aimed at enhancing life quality and mobility.</p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="about">
+          <div class="container">
+              <div class="about-content">
+                  <img src="/img/about.jpg" alt="About Us" class="about-image">
+                    <div class="about-text">
+                        <h2>About us</h2>
+                        <p>At Movimento e Pensamento, we are dedicated to providing top-quality physiotherapy services aimed at improving your overall wellbeing. Our experienced professionals specialize in personalized treatments designed to help you recover from injuries, manage chronic conditions, and enhance physical performance.</p>
+                        <p>Our clinic offers a supportive and welcoming environment where every patient receives individualized care. Utilizing state-of-the-art techniques and equipment, we are committed to helping you achieve a healthier, more active lifestyle.</p>
+                    <button class="btn btn-primary">Contact</button>
+                  </div>
+              </div>
+          </div>
+        </section>
+
+        <section class="image-carousel">
+            <div class="container">
+              <div class="carousel-container">
+                <div class="carousel-slide">
+                  <img src="/img/carousel1.jpg" alt="Carousel 1">
+                </div>
+                <div class="carousel-slide">
+                  <img src="/img/carousel2.jpg" alt="Carousel 2">
+                </div>
+                <div class="carousel-slide">
+                  <img src="/img/carousel3.jpg" alt="Carousel 3">
+                </div>
+                <div class="carousel-slide">
+                  <img src="/img/carousel4.jpg" alt="Carousel 4">
+                </div>
+                <div class="carousel-slide">
+                  <img src="/img/carousel5.jpg" alt="Carousel 5">
+                </div>
+                <div class="carousel-slide">
+                    <img src="/img/carousel6.jpg" alt="Carousel 6">
+                  </div>
+              </div>
+              <div class="carousel-indicators">
+                <span class="indicator active"></span>
+                <span class="indicator"></span>
+                <span class="indicator"></span>
+                <span class="indicator"></span>
+                <span class="indicator"></span>
+                <span class="indicator"></span>
+              </div>
+          </div>
+      </section>
+
+        <section class="more-info">
+          <div class="container">
+            <h2>More info</h2>
+            <div class="more-info-grid">
+                <div class="info-card">
+                    <img src="/img/basic.jpg" alt="Basic Physiotherapy Session">
+                    <h3>Basic Physiotherapy Session</h3>
+                    <p class="price">$120 <span class="per-session">per session</span></p>
+                    <button class="btn btn-primary">More info</button>
+                    <p>Ideal for those requiring general physiotherapy care. Includes an initial assessment and basic treatment.</p>
+                    <ul>
+                      <li>General care</li>
+                      <li>Initial assessment</li>
+                    </ul>
+                </div>
+                <div class="info-card popular">
+                    <img src="/img/specialized.jpg" alt="Specialized Physiotherapy Session">
+                    <h3>Specialized Physiotherapy Session</h3>
+                    <p class="price">$220 <span class="per-session">per session</span></p>
+                     <button class="btn btn-primary">More info</button>
+                    <p>Perfect for targeted physiological issues. Involves deep tissue work and tailored exercise routines.</p>
+                      <ul>
+                        <li>Deep tissue</li>
+                        <li>Tailored exercises</li>
+                      </ul>
+                </div>
+              <div class="info-card">
+                <img src="/img/comprehensive.jpg" alt="Comprehensive Physiotherapy Plan">
+                <h3>Comprehensive Physiotherapy Plan</h3>
+                <p class="price">$1800 <span class="per-session">per month</span></p>
+                <button class="btn btn-primary">More info</button>
+                <p>A monthly package for intensive recovery and rehabilitation. Includes personalized treatment plans and regular sessions.</p>
+                    <ul>
+                        <li>Intensive rehab</li>
+                        <li>Regular sessions</li>
+                      </ul>
+              </div>
+            </div>
+          </div>
+        </section>
+        
+        <section class="testimonials">
+          <div class="container">
+            <div class="testimonial-container">
+                <div class="testimonial-slide">
+                  <p>"Movimento e Pensamento is outstanding! Their team provided exceptional physiotherapy that greatly improved my mobility. The staff is compassionate and highly skilled. I am truly thankful for their support and recommend them to anyone seeking quality care in Duque de Caxias. Thank you so much!"</p>
+                  <p>- Ana</p>
+                </div>
+                
+              </div>
+            <div class="testimonial-indicators">
+              <span class="indicator active"></span>
+              <span class="indicator"></span>
+              </div>
+          </div>
+        </section>
+        
+
+        <section class="contact">
+            <div class="container">
+                <h2>Reach Out Today</h2>
+                <p>Use the contact form to connect with us. We're eager to assist you and answer any questions you may have.</p>
+                <form>
+                  <div class="form-grid">
+                    <div class="form-group">
+                        <input type="text" id="name" placeholder="Name">
+                    </div>
+                    <div class="form-group">
+                       <input type="email" id="email" placeholder="Email">
+                    </div>
+                  </div>
+                    <div class="form-group">
+                        <textarea id="message" placeholder="Message"></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </form>
+            </div>
+        </section>
+
+        <section class="location">
+          <div class="container">
+            <div class="map-container">
+              <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3679.533301249093!2d-43.31115902451542!3d-22.750463239431414!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x9977f41c246d25%3A0xb362d61a80197722!2sR.%20Genaro%20Doutor%20Manoel%20Teles%2C%20100%20-%20Centro%2C%20Duque%20de%20Caxias%20-%20RJ%2C%2025020-080!5e0!3m2!1spt-BR!2sbr!4v1715368796676!5m2!1spt-BR!2sbr" width="100%" height="400" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            </div>
+              <div class="location-info">
+                  <h2>Location</h2>
+                  <p>Duque de Caxias, RJ, Brasil</p>
+              </div>
+          </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <p>© 2024 Movimento e Pensamento. Todos os direitos reservados.</p>
+        </div>
+    </footer>
 
     <script src="/js/auth.js"></script>
 </body>
+
 </html>
