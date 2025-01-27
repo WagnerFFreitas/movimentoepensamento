@@ -297,40 +297,42 @@ main{
 .testimonials {
     padding: 4rem 0;
     background-color: #0a0a0a;
-}
-.testimonial-container {
+  }
+  
+  .testimonial-container {
     position: relative;
     min-height: 150px;
     overflow: hidden;
-}
-.testimonial-container > div {
+  }
+  
+  .testimonial-container > div {
     padding: 2rem;
     text-align: left;
     position: absolute;
     top: 0;
-    left: 100%; /* posiciona os slides fora da tela à direita */
+    left: 100%; /* Posiciona os slides fora da tela à direita */
     width: 100%;
     opacity: 0;
-    transition: all 0.5s ease-in-out; /* adiciona transição para todas as propriedades */
-}
-
-.testimonial-container > div:nth-child(1) {
-    left: 0; /* posiciona o primeiro slide no lugar */
-    opacity: 1;  /* deixa o primeiro slide visivel */
-}
-
-.testimonial-container > div.active {
-    left: 0; /* posiciona o slide ativo no lugar */
-    opacity: 1; /* deixa o slide ativo visivel */
-}
-
-
-.testimonial-indicators {
+    transition: all 0.5s ease-in-out; /* Adiciona transição para todas as propriedades */
+  }
+  
+  .testimonial-container > div:first-child {
+    left: 0; /* Posiciona o primeiro slide no lugar */
+    opacity: 1; /* Deixa o primeiro slide visível */
+  }
+  
+  .testimonial-container > div.active {
+    left: 0; /* Posiciona o slide ativo no lugar */
+    opacity: 1; /* Deixa o slide ativo visível */
+  }
+  
+  .testimonial-indicators {
     display: flex;
     justify-content: center;
     margin-top: 1rem;
-}
-.testimonial-indicators .indicator {
+  }
+  
+  .testimonial-indicators .indicator {
     width: 10px;
     height: 10px;
     background-color: #555;
@@ -338,10 +340,13 @@ main{
     margin: 0 5px;
     cursor: pointer;
     transition: background-color 0.3s ease;
-}
-.testimonial-indicators .indicator.active {
+  }
+  
+  .testimonial-indicators .indicator.active {
     background-color: #fff;
-}
+  }
+  
+
 
 
 
