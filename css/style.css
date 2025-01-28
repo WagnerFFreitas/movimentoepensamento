@@ -294,6 +294,8 @@ main{
     background-color: #fff;
 }
 */
+
+/*
 .testimonials {
     padding: 4rem 0;
     background-color: #0a0a0a;
@@ -310,20 +312,20 @@ main{
     text-align: left;
     position: absolute;
     top: 0;
-    left: 100%; /* Posiciona os slides fora da tela à direita */
+    left: 100%; /* Posiciona os slides fora da tela à direita 
     width: 100%;
     opacity: 0;
-    transition: all 0.5s ease-in-out; /* Adiciona transição para todas as propriedades */
+    transition: all 0.5s ease-in-out; /* Adiciona transição para todas as propriedades 
   }
   
   .testimonial-container > div:first-child {
     left: 0; /* Posiciona o primeiro slide no lugar */
-    opacity: 1; /* Deixa o primeiro slide visível */
+    opacity: 1; /* Deixa o primeiro slide visível 
   }
   
   .testimonial-container > div.active {
-    left: 0; /* Posiciona o slide ativo no lugar */
-    opacity: 1; /* Deixa o slide ativo visível */
+    left: 0; /* Posiciona o slide ativo no lugar 
+    opacity: 1; /* Deixa o slide ativo visível 
   }
   
   .testimonial-indicators {
@@ -345,7 +347,38 @@ main{
   .testimonial-indicators .indicator.active {
     background-color: #fff;
   }
-  
+*/
+.profissional {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 50%;
+    text-align: center;
+  }
+
+  .testimonial-indicators {
+    position: absolute;
+    bottom: -2350px; /* Ajuste a altura para que o indicador fique próximo ao texto do slide */
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    justify-content: center;
+  }
+
+  .indicator {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background-color: #aaa;
+    margin: 0 5px;
+    cursor: pointer;
+    margin-bottom: 20px; /* Adicione essa propriedade para ajustar a altura do indicador */
+  }
+
+  .indicator.active {
+    background-color: #fff;
+  }
 
 
 

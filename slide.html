@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Slide</title>
+  <style>
+    .profissional {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 50%;
+      text-align: center;
+    }
+
+    .testimonial-indicators {
+      position: absolute;
+      bottom: 220px; /* Ajuste a altura para que o indicador fique próximo ao texto do slide */
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      justify-content: center;
+    }
+
+    .indicator {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background-color: #ccc;
+      margin: 0 5px;
+      cursor: pointer;
+      margin-bottom: 20px; /* Adicione essa propriedade para ajustar a altura do indicador */
+    }
+
+    .indicator.active {
+      background-color: #333;
+    }
+  </style>
+</head>
+<body>
+  <section class="testimonials">
+    <div class="testimonial-indicators">
+      <span class="indicator active" data-slide="1"></span>
+      <span class="indicator" data-slide="2"></span>
+      <span class="indicator" data-slide="3"></span>
+    </div>
+    <div class="container">
+      <div class="testimonial-container">
+        <div class="profissional" id="slide1">
+          <p>O Movimento e Pensamento é excelente! Sua equipe forneceu fisioterapia excepcional que melhorou muito minha mobilidade. A equipe é compassiva e altamente qualificada. Sou realmente grato por seu apoio e os recomendo a quem procura atendimento de qualidade em Duque de Caxias. Muito obrigado!</p>
+          <p>Dra Silvana</p>
+        </div>
+        <div class="profissional" id="slide2" style="display: none;">
+          <p>Fiz meu tratamento com a Dra. Silvana e tive excelentes resultados. Ela foi muito atenciosa e competente, me ajudando a recuperar minha mobilidade e me sentir muito melhor. Recomendo a todos!</p>
+          <p>Dr. Eduardo</p>
+        </div>
+        <div class="profissional" id="slide3" style="display: none;">
+          <p>Os serviços da clínica são de excelente qualidade. A equipe é muito atenciosa e profissional, sempre disposta a ajudar. O ambiente é acolhedor e me senti muito bem durante todo o tratamento.</p>
+          <p>Dr. Marcos</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <script>
+    const indicators = document.querySelectorAll('.indicator');
+    const slides = document.querySelectorAll('.profissional');
+
+    let currentSlide = 0;
+    let isAnimating = false; // Variável para controlar o estado da exibição dos slides
+
+    indicators.forEach((indicator, index) => {
+      indicator.addEventListener('click', () => {
+        if (isAnimating) return; // Verificar se a exibição dos slides está em andamento
+
+        currentSlide = index;
+        showSlide(currentSlide);
+      });
+    });
+
+    function showSlide(index) {
+      slides.forEach((slide) => slide.style.display = 'none');
+      indicators.forEach((indicator) => indicator.classList.remove('active'));
+
+      slides[index].style.display = 'block';
+      indicators[index].classList.add('active');
+
+      isAnimating = true; // Marcar a exibição dos slides como em andamento
+
+      setTimeout(() => {
+        isAnimating = false; // Marcar a exibição dos slides como concluída
+      }, 1000); // Reduzir o tempo de animação para 1 segundo
+    }
+
+    function nextSlide() {
+      currentSlide = (currentSlide + 1) % slides.length;
+      showSlide(currentSlide);
+    }
+
+    setInterval(nextSlide, 10000);
+  </script>
+</body>
+</html>

@@ -28,36 +28,35 @@ const auth = {
 };
 
 document.addEventListener('DOMContentLoaded', () => {
-    const slides = document.querySelectorAll('.testimonial-container > div.profissional');
-    const indicators = document.querySelectorAll('.testimonial-indicators .indicator');
-    let currentSlide = 0;
+  const slides = document.querySelectorAll('.testimonial-slide');
+  const indicators = document.querySelectorAll('.testimonial-indicators .indicator');
+  let currentSlide = 0;
 
-    // Função para exibir o slide atual
-    function showSlide(index) {
-        slides.forEach((slide, i) => {
-            slide.classList.toggle('active', i === index); // Atualiza o slide ativo
-        });
-
-        indicators.forEach((indicator, i) => {
-            indicator.classList.toggle('active', i === index); // Atualiza o indicador ativo
-        });
-    }
-
-    // Função para avançar para o próximo slide
-    function nextSlide() {
-        currentSlide = (currentSlide + 1) % slides.length; // Avança para o próximo slide ou reinicia
-        showSlide(currentSlide);
-    }
-
-    // Navegação manual pelos indicadores
-    indicators.forEach((indicator, index) => {
-        indicator.addEventListener('click', () => {
-            currentSlide = index;
-            showSlide(currentSlide);
-        });
+  function showSlide(index) {
+    slides.forEach((slide, i) => {
+      slide.classList.toggle('active', i === index);
     });
+    indicators.forEach((indicator, i) => {
+      indicator.classList.toggle('active', i === index);
+    });
+  }
 
-    // Inicializa o primeiro slide e configura a rotação automática
+  function nextSlide() {
+    currentSlide = (currentSlide + 1) % slides.length;
     showSlide(currentSlide);
-    setInterval(nextSlide, 5000); // Altera automaticamente a cada 5 segundos
+  }
+
+  // Initialize with the first slide
+  showSlide(currentSlide);
+
+  // Automatic rotation every 5 seconds
+  setInterval(nextSlide, 5000);
+
+  // Manual navigation with indicators
+  indicators.forEach((indicator, index) => {
+    indicator.addEventListener('click', () => {
+      currentSlide = index;
+      showSlide(currentSlide);
+    });
+  });
 });
