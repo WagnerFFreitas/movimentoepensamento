@@ -349,37 +349,36 @@ main{
   }
 */
 .profissional {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 50%;
-    text-align: center;
-  }
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 50%;
+  text-align: center;
+}
 
-  .testimonial-indicators {
-    position: absolute;
-    bottom: -2350px; /* Ajuste a altura para que o indicador fique próximo ao texto do slide */
-    left: 50%;
-    transform: translateX(-50%);
-    display: flex;
-    justify-content: center;
-  }
+.testimonial-indicators {
+  position: absolute;
+  bottom: -2340px; /* Ajuste a altura para que o indicador fique próximo ao texto do slide */
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  justify-content: center;
+}
 
-  .indicator {
-    width: 10px;
-    height: 10px;
-    border-radius: 50%;
-    background-color: #aaa;
-    margin: 0 5px;
-    cursor: pointer;
-    margin-bottom: 20px; /* Adicione essa propriedade para ajustar a altura do indicador */
-  }
+.indicator1 {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: #ccc;
+  margin: 0 5px;
+  cursor: pointer;
+  margin-bottom: 20px; /* Adicione essa propriedade para ajustar a altura do indicador */
+}
 
-  .indicator.active {
-    background-color: #fff;
-  }
-
+.indicator1.active {
+  background-color: #333;
+}
 
 
 

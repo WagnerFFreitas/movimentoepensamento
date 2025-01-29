@@ -27,7 +27,7 @@ const auth = {
     }
   };
   
-  document.addEventListener('DOMContentLoaded', function() {
+  /*document.addEventListener('DOMContentLoaded', function() {
     const slides = document.querySelectorAll('.testimonial-container > div');
     const indicators = document.querySelectorAll('.testimonial-indicators .indicator');
     let currentSlide = 0;
@@ -91,4 +91,40 @@ const auth = {
     showSlide(currentSlide);
   }
   
+  setInterval(nextSlide, 10000);*/
+
+  const indicators = document.querySelectorAll('.indicator1');
+  const slides = document.querySelectorAll('.profissional');
+
+  let currentSlide = 0;
+  let isAnimating = false; // Variável para controlar o estado da exibição dos slides
+
+  indicators.forEach((indicator1, index) => {
+    indicator1.addEventListener('click', () => {
+      if (isAnimating) return; // Verificar se a exibição dos slides está em andamento
+
+      currentSlide = index;
+      showSlide(currentSlide);
+    });
+  });
+
+  function showSlide(index) {
+    slides.forEach((slide) => slide.style.display = 'none');
+    indicators.forEach((indicator1) => indicator1.classList.remove('active'));
+
+    slides[index].style.display = 'block';
+    indicators[index].classList.add('active');
+
+    isAnimating = true; // Marcar a exibição dos slides como em andamento
+
+    setTimeout(() => {
+      isAnimating = false; // Marcar a exibição dos slides como concluída
+    }, 1000); // Reduzir o tempo de animação para 1 segundo
+  }
+
+  function nextSlide() {
+    currentSlide = (currentSlide + 1) % slides.length;
+    showSlide(currentSlide);
+  }
+
   setInterval(nextSlide, 10000);
